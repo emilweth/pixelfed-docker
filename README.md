@@ -38,6 +38,15 @@ Start the whole stack
 docker compose up -d
 ```
 
+Get a shell inside the pixelfed container (to run commands like `php artisan user:create` e.g.)
+
+```shell
+docker compose exec pixelfed sh
+```
+
+# Advanced Usage
+You can add additional env var (e.g. for S3) in the `.env.extr` file. Refer to the [pixelfed documentation](https://docs.pixelfed.org/technical-documentation/config/) for more informations.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first

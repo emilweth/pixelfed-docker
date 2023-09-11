@@ -10,6 +10,7 @@ x-pixelfed: &pixelfed
     - 'pixelfed-public:/srv/app/public'
     - 'php-socket:/var/run/php'
     - './.docker-compose/pixelfed/php-fpm.d:/usr/local/etc/php-fpm.d:ro'
+  env_file: .env.extra
   environment:
     # App settings
     APP_NAME: ${APP_NAME:-Pixelfed}

@@ -33,6 +33,8 @@ ask_for_input() {
 # Confirmation before overwriting
 confirm_overwrite
 
+touch .env.extra
+
 # Sample usage with the default value
 ask_for_input "APP_NAME" "Name of your application" "Pixelfed"
 ask_for_input "APP_URL" "Application URL" "https://localhost"
