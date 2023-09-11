@@ -20,7 +20,6 @@ x-pixelfed: &pixelfed
     ADMIN_DOMAIN: ${ADMIN_DOMAIN:-localhost}
     SESSION_DOMAIN: ${SESSION_DOMAIN:-localhost}
     APP_KEY: ${APP_KEY:-}
-    STORIES_ENABLED: ${STORIES_ENABLED:-true}
 
     # Docker / DB settings
     DB_CONNECTION: 'pgsql'
