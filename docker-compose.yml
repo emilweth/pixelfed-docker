@@ -8,6 +8,7 @@ x-pixelfed: &pixelfed
     - default
   volumes:
     - 'pixelfed-public:/srv/app/public'
+    - 'pixelfed-storage:/srv/app/storage'
     - 'php-socket:/var/run/php'
     - './.docker-compose/pixelfed/php-fpm.d:/usr/local/etc/php-fpm.d:ro'
   env_file: .env.extra
@@ -47,6 +48,7 @@ services:
       SERVER_NAME: ${APP_DOMAIN:-localhost}
     volumes:
       - 'pixelfed-public:/srv/app/public'
+      - 'pixelfed-storage:/srv/app/storage'
       - 'php-socket:/var/run/php'
       - "./.docker-compose/caddy/Caddyfile:/etc/caddy/Caddyfile:ro"
     ports:
@@ -63,7 +65,7 @@ services:
         published: ${HTTP3_PORT:-443}
         protocol: udp
 
-  copy-public:
+  copy-data:
     <<: *pixelfed
     entrypoint: ["sh", "-c"]
     command:
@@ -87,7 +89,6 @@ services:
     entrypoint: ["sh", "-c"]
     command:
       - "php artisan migrate --force"
-
 
   database:
     image: postgres:${POSTGRES_VERSION:-15}-alpine
@@ -116,4 +117,10 @@ volumes:
     driver_opts:
       type: none
       device: $PWD/data/pixelfed/public
+      o: bind,uid=${UID:-1000},gid=uid=${GID:-1000}
+  pixelfed-storage:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD/data/pixelfed/storage
       o: bind,uid=${UID:-1000},gid=uid=${GID:-1000}

@@ -1,2 +1,3 @@
 pixelfed/public/*
 postgres/*
+!**/.gitkeep
