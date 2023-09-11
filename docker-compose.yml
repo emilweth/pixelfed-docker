@@ -76,6 +76,14 @@ services:
     command:
       - "php artisan horizon"
 
+  pixelfed-migrations:
+    <<: *pixelfed
+    # In a different profile to avoid starting it involuntarly
+    profiles: ['migration']
+    entrypoint: ["sh", "-c"]
+    command:
+      - "php artisan migrate --force"
+
 
   database:
     image: postgres:${POSTGRES_VERSION:-15}-alpine
