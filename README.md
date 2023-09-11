@@ -45,7 +45,7 @@ docker compose exec pixelfed sh
 ```
 
 # Advanced Usage
-You can add additional env var (e.g. for S3) in the `.env.extr` file. Refer to the [pixelfed documentation](https://docs.pixelfed.org/technical-documentation/config/) for more informations.
+You can add additional env var (e.g. for S3) in the `.env.extra` file. Refer to the [pixelfed documentation](https://docs.pixelfed.org/technical-documentation/config/) for more informations.
 
 ## Contributing
 
