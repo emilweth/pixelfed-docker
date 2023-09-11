@@ -11,12 +11,16 @@ x-pixelfed: &pixelfed
     - 'php-socket:/var/run/php'
     - './.docker-compose/pixelfed/php-fpm.d:/usr/local/etc/php-fpm.d:ro'
   environment:
+    # App settings
     APP_NAME: ${APP_NAME:-Pixelfed}
     APP_URL: ${APP_URL:-https://localhost}
     APP_DOMAIN: ${APP_DOMAIN:-localhost}
     ADMIN_DOMAIN: ${ADMIN_DOMAIN:-localhost}
     SESSION_DOMAIN: ${SESSION_DOMAIN:-localhost}
     APP_KEY: ${APP_KEY:-}
+    STORIES_ENABLED: ${STORIES_ENABLED:-true}
+
+    # Docker / DB settings
     DB_CONNECTION: 'pgsql'
     DB_HOST: 'database'
     DB_PORT: '5432'
@@ -32,7 +36,6 @@ x-pixelfed: &pixelfed
     AP_REMOTE_FOLLOW: "true"
     LOG_CHANNEL: "stderr"
     LOG_STDERR_FORMATTER: "Monolog\\Formatter\\JsonFormatter"
-    STORIES_ENABLED: "true"
 
 services:
   caddy:
