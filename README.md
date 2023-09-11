@@ -4,7 +4,7 @@ Run pixelfed in a docker compose environment
 
 ## Requirements
 
-You need to have the following CLI installed and set up.
+You need to have the following tools :
 
 - `docker` with the [compose plugin](https://docs.docker.com/compose/install/linux/).
 
